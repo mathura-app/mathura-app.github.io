@@ -63,13 +63,13 @@
   <p class="tagline">Matura z matematyki krok po kroku</p>
 
   <div class="buttons">
+    <a id="ios" class="store" href="#">
+      <span class="os">🍎</span>
+      <span><span class="small">Pobierz na iPhone'a</span><span class="big">App Store</span></span>
+    </a>
     <a id="android" class="store" href="#">
       <span class="os">🤖</span>
       <span><span class="small">Pobierz na Androida</span><span class="big">Google Play</span></span>
-    </a>
-    <a id="ios" class="store" href="#">
-      <span class="os">🍎</span>
-      <span><span class="small">Pobierz na iPhone'a i iPada</span><span class="big">App Store</span></span>
     </a>
   </div>
   <p class="hint" id="hint"></p>
@@ -77,7 +77,7 @@
   <div class="features">
     <h2>Co znajdziesz w aplikacji</h2>
     <ul>
-      <li>Ponad 100 typów zadań maturalnych z 17 działów, za każdym razem z nowymi liczbami.</li>
+      <li>Ponad 100 typów zadań maturalnych z 17 działów, a w nich losowane liczby i dane.</li>
       <li>Każde zadanie rozbite na krótkie kroki, z podpowiedzią i wyjaśnieniem.</li>
       <li>Samouczek do każdego typu zadania.</li>
       <li>Aplikacja uczy się razem z Tobą – częściej daje zadania, które sprawiają Ci trudność, a opanowane przypomina co jakiś czas, żebyś ich nie zapomniał.</li>
@@ -110,16 +110,15 @@
     } else {
       el.classList.add("soon");
       el.removeAttribute("href");
-      el.querySelector(".small").textContent = key === "android" ? "Android – wkrótce" : "iPhone i iPad – wkrótce";
+      el.querySelector(".small").textContent = key === "android" ? "Android – wkrótce" : "iPhone – wkrótce";
     }
   }
 
-  // podświetlamy sklep pasujący do telefonu i stawiamy go na górze
+  // podświetlamy sklep pasujący do telefonu (kolejność stała: App Store pierwszy - wytyczne Apple)
   const hint = document.getElementById("hint");
   if (isAndroid || isIOS) {
     const mine = document.getElementById(isAndroid ? "android" : "ios");
     mine.classList.add("suggested");
-    mine.parentNode.prepend(mine);
     if (LINKS[isAndroid ? "android" : "ios"]) hint.textContent = isAndroid ? "Masz telefon z Androidem – pobierz z Google Play." : "Masz iPhone'a – pobierz z App Store.";
   }
 </script>
